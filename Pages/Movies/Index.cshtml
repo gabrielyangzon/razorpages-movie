@@ -8,7 +8,7 @@
 <h1>Index</h1>
 
 <p>
-    <a asp-page="Create">Create New</a>
+    <a asp-page="Create"><i class="material-icons" style="font-size:36px">note_add</i></a>
 </p>
 <form>
     <p>
@@ -60,9 +60,9 @@
                     @Html.DisplayFor(modelItem => item.Rating)
                 </td>
                 <td>
-                    <a asp-page="./Edit" asp-route-id="@item.Id">Edit</a> |
-                    <a asp-page="./Details" asp-route-id="@item.Id">Details</a> |
-                    <a asp-page="./Delete" asp-route-id="@item.Id">Delete</a>
+                    <a asp-page="./Edit" asp-route-id="@item.Id"><i class="material-icons">mode_edit</i></a>
+                    <a asp-page="./Details" asp-route-id="@item.Id"><i style="color:green" class="material-icons">info</i></a>
+                    <a asp-page="./Delete" asp-route-id="@item.Id"><i style="color:red" class="material-icons">delete</i></a>
                 </td>
             </tr>
         }

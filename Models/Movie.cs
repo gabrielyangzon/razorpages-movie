@@ -26,9 +26,6 @@ namespace razorpages_movie.Models
         public decimal Price { get; set; }
 
 
-
-
-
         [RegularExpression(@"^[A-Z]+[a-zA-Z0-9""'\s-]*$")]
         [StringLength(5)]
         [Required]
