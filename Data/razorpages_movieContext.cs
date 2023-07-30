@@ -9,9 +9,15 @@ namespace razorpages_movie.Data
 {
     public class razorpages_movieContext : DbContext
     {
-        public razorpages_movieContext (DbContextOptions<razorpages_movieContext> options)
+        public razorpages_movieContext(DbContextOptions<razorpages_movieContext> options)
             : base(options)
         {
+        }
+
+
+        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        {
+            optionsBuilder.UseInMemoryDatabase("movie");
         }
 
         public DbSet<razorpages_movie.Models.Movie> Movie { get; set; } = default!;

@@ -11,6 +11,7 @@ namespace razorpages_movie.Models
                 serviceProvider.GetRequiredService<
                     DbContextOptions<razorpages_movieContext>>()))
             {
+                context.Database.EnsureCreated();
                 if (context == null || context.Movie == null)
                 {
                     throw new ArgumentNullException("Null RazorPagesMovieContext");

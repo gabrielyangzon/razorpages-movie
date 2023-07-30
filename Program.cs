@@ -2,6 +2,7 @@
 using Microsoft.Extensions.DependencyInjection;
 using razorpages_movie.Data;
 using razorpages_movie.Models;
+using razorpages_movie.Extensions;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -11,8 +12,9 @@ builder.Services.AddRazorPages(options =>
     options.Conventions.AddPageRoute("/Movies/Index", "");
 });
 
-builder.Services.AddDbContext<razorpages_movieContext>(options =>
-    options.UseSqlServer(builder.Configuration.GetConnectionString("razorpages_movieContext") ?? throw new InvalidOperationException("Connection string 'razorpages_movieContext' not found.")));
+
+
+builder.Services.ConfigureDbContext();
 
 var app = builder.Build();
 
