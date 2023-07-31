@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using razorpages_movie.Data;
+using razorpages_movie.Helpers;
 using razorpages_movie.Models;
 
 namespace razorpages_movie.Pages.Movies
@@ -14,7 +15,7 @@ namespace razorpages_movie.Pages.Movies
     public class EditModel : PageModel
     {
         private readonly razorpages_movie.Data.razorpages_movieContext _context;
-
+        public List<SelectListItem> Genres { get; set; }
         public EditModel(razorpages_movie.Data.razorpages_movieContext context)
         {
             _context = context;
@@ -30,12 +31,13 @@ namespace razorpages_movie.Pages.Movies
                 return NotFound();
             }
 
-            var movie =  await _context.Movie.FirstOrDefaultAsync(m => m.Id == id);
+            var movie = await _context.Movie.FirstOrDefaultAsync(m => m.Id == id);
             if (movie == null)
             {
                 return NotFound();
             }
             Movie = movie;
+            Genres = Helper.GenreList.Select(genre => new SelectListItem() { Value = genre, Text = genre }).ToList();
             return Page();
         }
 
@@ -71,7 +73,7 @@ namespace razorpages_movie.Pages.Movies
 
         private bool MovieExists(int id)
         {
-          return (_context.Movie?.Any(e => e.Id == id)).GetValueOrDefault();
+            return (_context.Movie?.Any(e => e.Id == id)).GetValueOrDefault();
         }
     }
 }

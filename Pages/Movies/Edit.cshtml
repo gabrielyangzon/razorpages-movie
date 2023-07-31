@@ -26,7 +26,8 @@
             </div>
             <div class="form-group">
                 <label asp-for="Movie.Genre" class="control-label"></label>
-                <input asp-for="Movie.Genre" class="form-control" />
+                @*<input asp-for="Movie.Genre" class="form-control" />*@
+                <select asp-for="Movie.Genre" name="Movie.Genre" asp-items="Model.Genres" class="form-control"></select>
                 <span asp-validation-for="Movie.Genre" class="text-danger"></span>
             </div>
             <div class="form-group">
@@ -48,8 +49,8 @@
 </div>
 
 <div>
- 
-    <a asp-page="./Index" ><i style="color:green" class="material-icons">arrow_back</i></a>
+
+    <a asp-page="./Index"><i style="color:green" class="material-icons">arrow_back</i></a>
 </div>
 
 @section Scripts {

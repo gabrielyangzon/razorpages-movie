@@ -8,7 +8,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Newtonsoft.Json.Linq;
 using razorpages_movie.Data;
 using razorpages_movie.Models;
-using static System.Net.Mime.MediaTypeNames;
+using razorpages_movie.Helpers;
 
 namespace razorpages_movie.Pages.Movies
 {
@@ -18,7 +18,7 @@ namespace razorpages_movie.Pages.Movies
 
         public List<SelectListItem> Genres { get; set; }
 
-        public List<string> GenreList = new List<string>() { "Action", "Horror", "Drama", "Comedy", "Thriller" };
+
 
         public CreateModel(razorpages_movie.Data.razorpages_movieContext context)
         {
@@ -29,7 +29,7 @@ namespace razorpages_movie.Pages.Movies
 
         public IActionResult OnGet()
         {
-            Genres = GenreList.Select(genre => new SelectListItem() { Value = genre, Text = genre }).ToList();
+            Genres = Helper.GenreList.Select(genre => new SelectListItem() { Value = genre, Text = genre }).ToList();
             return Page();
         }
 

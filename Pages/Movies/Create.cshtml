@@ -25,12 +25,7 @@
             </div>
             <div class="form-group">
                 <label asp-for="Movie.Genre" class="control-label"></label>
-                @*<input asp-for="Movie.Genre" class="form-control" />*@
-
-                @*<select asp-items="Model.Genres" class="form-control"></select>*@
-
-                @await Component.InvokeAsync("GenreList",Model.Movie.Genre)
-
+                <select name="Movie.Genre" asp-items="Model.Genres" class="form-control"></select>
                 <span asp-validation-for="Movie.Genre" class="text-danger"></span>
             </div>
             <div class="form-group">
